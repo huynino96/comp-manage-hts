@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "mainboard")
+@Table(name = "mainboards")
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
@@ -19,7 +19,7 @@ import java.util.List;
 @Setter
 public class Mainboard implements Serializable {
     @Id
-    @Column(name = "mainboard_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

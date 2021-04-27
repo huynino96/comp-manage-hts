@@ -31,7 +31,4 @@ public class Company implements Serializable {
     })
     private List<Computer> computer;
 
-
-
-
 }

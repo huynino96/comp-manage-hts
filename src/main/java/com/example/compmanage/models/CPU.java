@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "cpu")
+@Table(name = "cpus")
 @Accessors(chain = true)
 @Getter
 @Setter

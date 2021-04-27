@@ -37,5 +37,9 @@ public class Computer implements Serializable {
     @JoinColumn(name = "cpu_id")
     private CPU cpu;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mainboard_id")
+    private Mainboard mainboard;
+
 
 }
