@@ -36,6 +36,17 @@ public class CompanyController {
         return companyRepository.save(company);
     }
 
+    @PutMapping("/company/{id}")
+    public ResponseEntity <Company> updateCompany(
+            @PathVariable(value = "id") Long companyId,
+            @Valid @RequestBody Company companyDetails) throws ResourceNotFoundException {
+        Company company = companyRepository.findById(companyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Company not found :: " + companyId));
+        company.setCompanyName(companyDetails.getCompanyName());
+        company.setComputer(companyDetails.getComputer());
+        final Company updatedCompany = companyRepository.save(company);
+        return ResponseEntity.ok(updatedCompany);
+    }
 
 
 }
