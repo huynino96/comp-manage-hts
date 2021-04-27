@@ -34,4 +34,4 @@ build/
 
 ### DB Config ###
 
-/home/huyho/IdeaProjects/comp-manage-hts/src/main/resources/application.properties
+/comp-manage-hts/src/main/resources/application.properties
