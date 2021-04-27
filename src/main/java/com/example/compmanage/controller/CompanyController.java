@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -48,5 +50,15 @@ public class CompanyController {
         return ResponseEntity.ok(updatedCompany);
     }
 
+    @DeleteMapping("/company/{id}")
+    public Map< String, Boolean > deleteCompany(
+            @PathVariable(value = "id") Long companyId) throws ResourceNotFoundException {
+        Company company = companyRepository.findById(companyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Company not found :: " + companyId));
+        companyRepository.delete(company);
+        Map < String, Boolean > response = new HashMap< >();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
 
 }
