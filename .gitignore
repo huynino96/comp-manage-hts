@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### DB Config ###
+
+/home/huyho/IdeaProjects/comp-manage-hts/src/main/resources/application.properties
