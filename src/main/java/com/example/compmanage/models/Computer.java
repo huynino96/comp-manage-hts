@@ -41,5 +41,8 @@ public class Computer implements Serializable {
     @JoinColumn(name = "mainboard_id")
     private Mainboard mainboard;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ram_id")
+    private RAM ram;
 
 }
