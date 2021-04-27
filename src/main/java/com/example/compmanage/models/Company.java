@@ -1,15 +1,14 @@
 package com.example.compmanage.models;
 
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Collection;
-
-//import lombok.experimental.Accessors;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,23 +16,22 @@ import java.util.Collection;
 @Table(name = "companies")
 @AllArgsConstructor
 @NoArgsConstructor
-//@Accessors(chain = true)
+@Accessors(chain = true)
 public class Company implements Serializable {
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name="companyName")
+    private String companyName;
 
-    @Column(nullable = false, updatable = false)
-    @CreatedDate
-    private LocalDateTime createdDate;
-    @Column(nullable = false)
-    @LastModifiedDate
-    private LocalDateTime updatedDate;
+    @OneToMany(mappedBy = "company", cascade = {
+            CascadeType.ALL
+    })
+    private List<Computer> computer;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Collection<Computer> computer;
+
+
+
 }

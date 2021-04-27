@@ -1,7 +1,7 @@
 package com.example.compmanage.models;
 
 import lombok.*;
-//import lombok.experimental.Accessors;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-//@Accessors(chain = true)
+@Accessors(chain = true)
 public class Computer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,17 +25,10 @@ public class Computer implements Serializable {
     private String name;
     private String user;
 
-    @Column(nullable = false, updatable = false)
-    @CreatedDate
-    private LocalDateTime createdDate;
-    @Column(nullable = false)
-    @LastModifiedDate
-    private LocalDateTime updatedDate;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Company company;
+
+
 
 }
