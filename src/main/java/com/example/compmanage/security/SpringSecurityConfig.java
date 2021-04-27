@@ -27,10 +27,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/companies/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/companies/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/api/companies/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/company/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/company/**").hasRole("ADMIN")
 //                .antMatchers(HttpMethod.PATCH, "/api/products/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/companies/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/company/**").hasRole("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
