@@ -1,38 +1,39 @@
 package com.example.compmanage.models;
 
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Collection;
+
+//import lombok.experimental.Accessors;
 
 @Entity
-public class Company extends AuditModel{
+@Getter
+@Setter
+@Table(name = "companies")
+@AllArgsConstructor
+@NoArgsConstructor
+//@Accessors(chain = true)
+public class Company implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 100)
-    @Column(unique = true)
     private String name;
 
-    public Company(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Column(nullable = false, updatable = false)
+    @CreatedDate
+    private LocalDateTime createdDate;
+    @Column(nullable = false)
+    @LastModifiedDate
+    private LocalDateTime updatedDate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Collection<Computer> computer;
 }
