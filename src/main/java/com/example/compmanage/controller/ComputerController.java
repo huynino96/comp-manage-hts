@@ -32,4 +32,19 @@ public class ComputerController {
         return computerRepository.save(computer);
         }).orElseThrow(() -> new ResourceNotFoundException("Company not found"));
     }
+
+    @PutMapping("/company/{companyId}/computer/{computerId}")
+    public Computer updateComputer(@PathVariable(value = "companyId") Long companyId,
+                               @PathVariable(value = "computerId") Long computerId, @Valid @RequestBody Computer computerRequest)
+            throws ResourceNotFoundException {
+        if (!companyRepository.existsById(companyId)) {
+            throw new ResourceNotFoundException("Company ID not found");
+        }
+        return computerRepository.findById(computerId).map(computer -> {
+                computer.setComputerName(computerRequest.getComputerName());
+                computer.setUser(computerRequest.getUser());
+        return computerRepository.save(computer);
+        }).orElseThrow(() -> new ResourceNotFoundException("course id not found"));
+    }
+
 }
