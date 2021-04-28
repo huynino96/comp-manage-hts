@@ -33,6 +33,10 @@ public class RAM implements Serializable {
     @Column(name = "ramBus")
     private String ramBus;
 
+    @Column(name = "ramQuantity")
+    private String ramQuantity;
+
+
     @OneToMany(mappedBy = "ram", cascade = {
             CascadeType.ALL
     })

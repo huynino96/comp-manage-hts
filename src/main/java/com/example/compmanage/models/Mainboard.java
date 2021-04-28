@@ -29,6 +29,9 @@ public class Mainboard implements Serializable {
     @Column(name = "mainboardName")
     private String mainboardName;
 
+    @Column(name = "mainboardType")
+    private String mainBoardType;
+
     @OneToMany(mappedBy = "mainboard", cascade = {
             CascadeType.ALL
     })
