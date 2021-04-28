@@ -1,18 +1,20 @@
 package com.example.compmanage.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "companies")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,9 +28,11 @@ public class Company implements Serializable {
     @Column(name="companyName")
     private String companyName;
 
-    @OneToMany(mappedBy = "company", cascade = {
-            CascadeType.ALL
-    })
+    //@RestResource(exported = false)
+    //@JsonIgnore
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference
     private List<Computer> computer;
 
 }
