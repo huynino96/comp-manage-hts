@@ -12,4 +12,10 @@ import java.util.Optional;
 public interface ComputerRepository extends JpaRepository<Computer, Long> {
     List<Computer> findByCompanyId(Long computerId);
     Optional<Computer> findByIdAndCompanyId(Long id, Long companyId);
+
+    List<Computer> findByCpuId(Long computerId);
+    Optional<Computer> findByIdAndCpuId(Long id, Long cpuId);
+
+    List<Computer> findByDiskId(Long computerId);
+    Optional<Computer> findByIdAndDiskId(Long id, Long diskId);
 }
