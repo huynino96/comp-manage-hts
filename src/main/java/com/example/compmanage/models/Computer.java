@@ -35,15 +35,23 @@ public class Computer implements Serializable {
     private Company company;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
     @JoinColumn(name = "cpu_id")
     private CPU cpu;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mainboard_id")
+    @JsonBackReference
     private Mainboard mainboard;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ram_id")
+    @JsonBackReference
     private RAM ram;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "disk_id")
+    @JsonBackReference
+    private Disk disk;
 
 }

@@ -1,10 +1,13 @@
 package com.example.compmanage.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,8 +38,8 @@ public class CPU implements Serializable {
     @Column(name= "cpuSpeed")
     private String cpuSpeed;
 
-    @OneToMany(mappedBy = "cpu", cascade = {
-            CascadeType.ALL
-    })
+    @OneToMany(mappedBy = "cpu", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference
     private List<Computer> computer;
 }
