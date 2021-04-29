@@ -1,10 +1,10 @@
 package com.example.compmanage.models;
 
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -13,28 +13,33 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "gpus")
-@Data
+@Table(name = "rams")
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class GPU implements Serializable {
+@Data
+public class Ram implements Serializable {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "gpuBrand")
-    private String gpuBrand;
+    @Column(name = "ramBrand")
+    private String ramBrand;
 
-    @Column(name = "gpuName")
-    private String gpuName;
+    @Column(name = "ramSize")
+    private String ramSize;
 
-    @Column(name = "gpuSize")
-    private String gpuSize;
+    @Column(name = "ramType")
+    private String ramType;
 
-    @Column(name = "gpuType")
-    private String gpuType;
+    @Column(name = "ramBus")
+    private String ramBus;
 
-    @OneToMany(mappedBy = "gpu", fetch = FetchType.EAGER)
+    @Column(name = "ramQuantity")
+    private String ramQuantity;
+
+    @OneToMany(mappedBy = "ram", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonManagedReference
     private List<Computer> computer;

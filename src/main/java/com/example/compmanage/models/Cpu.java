@@ -2,8 +2,9 @@ package com.example.compmanage.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -13,33 +14,31 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "rams")
+@Table(name = "cpus")
 @Accessors(chain = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-@Data
-public class RAM implements Serializable {
+@NoArgsConstructor
+public class Cpu implements Serializable {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ramBrand")
-    private String ramBrand;
+    @Column(name="cpuType")
+    private String cpuType;
 
-    @Column(name = "ramSize")
-    private String ramSize;
+    @Column(name = "coreType")
+    private String coreType;
 
-    @Column(name = "ramType")
-    private String ramType;
+    @Column(name = "cpuGen")
+    private String cpuGen;
 
-    @Column(name = "ramBus")
-    private String ramBus;
+    @Column(name= "cpuSpeed")
+    private String cpuSpeed;
 
-    @Column(name = "ramQuantity")
-    private String ramQuantity;
-
-    @OneToMany(mappedBy = "ram", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cpu", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonManagedReference
     private List<Computer> computer;

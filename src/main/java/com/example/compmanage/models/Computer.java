@@ -3,13 +3,9 @@ package com.example.compmanage.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="computers")
@@ -37,7 +33,7 @@ public class Computer implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonBackReference
     @JoinColumn(name = "cpu_id")
-    private CPU cpu;
+    private Cpu cpu;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mainboard_id")
