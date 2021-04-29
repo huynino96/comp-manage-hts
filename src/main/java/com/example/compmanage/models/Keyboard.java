@@ -24,6 +24,9 @@ public class Keyboard implements Serializable {
     @Column(name = "keyboardName")
     private String keyboardName;
 
+    @Column(name = "keyboardProduct")
+    private String keyboardProduct;
+
     @OneToMany(mappedBy = "keyboard", fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonManagedReference
