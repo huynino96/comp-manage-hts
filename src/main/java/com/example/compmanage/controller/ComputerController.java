@@ -5,6 +5,7 @@ import com.example.compmanage.models.Computer;
 import com.example.compmanage.repository.CompanyRepository;
 import com.example.compmanage.repository.ComputerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -45,6 +46,16 @@ public class ComputerController {
                 computer.setUser(computerRequest.getUser());
         return computerRepository.save(computer);
         }).orElseThrow(() -> new ResourceNotFoundException("course id not found"));
+    }
+
+    @DeleteMapping("/company/{companyId}/computer/{computerId}")
+    public ResponseEntity< ? > deleteComputer(@PathVariable(value = "companyId") Long companyId,
+                                              @PathVariable(value = "computerId") Long computerId) throws ResourceNotFoundException {
+        return computerRepository.findByIdAndCompanyId(computerId, companyId).map(computer -> {
+            computerRepository.delete(computer);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException(
+                "Computer not found with id " + computerId + " and Company ID " + companyId));
     }
 
 }
