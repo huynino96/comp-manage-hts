@@ -50,4 +50,23 @@ public class Computer implements Serializable {
     @JsonBackReference
     private Disk disk;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gpu_id")
+    @JsonBackReference
+    private Gpu gpu;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "keyboard_id")
+    @JsonBackReference
+    private Keyboard keyboard;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mouse_id")
+    @JsonBackReference
+    private Mouse mouse;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "monitor_id")
+    @JsonBackReference
+    private Monitor monitor;
 }
