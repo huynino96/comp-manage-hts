@@ -27,8 +27,7 @@ public class Mouse implements Serializable {
     @Column(name = "mouseType")
     private String mouseType;
 
-    @OneToMany(mappedBy = "mouse", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "mouse", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 }

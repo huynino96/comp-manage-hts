@@ -34,8 +34,7 @@ public class Gpu implements Serializable {
     @Column(name = "gpuType")
     private String gpuType;
 
-    @OneToMany(mappedBy = "gpu", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "gpu", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 }

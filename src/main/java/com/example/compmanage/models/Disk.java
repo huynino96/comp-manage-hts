@@ -30,10 +30,9 @@ public class Disk implements Serializable {
     @Column(name = "diskSize")
     private String diskSize;
 
-    @OneToMany(mappedBy = "disk", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "disk", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 
 
 }

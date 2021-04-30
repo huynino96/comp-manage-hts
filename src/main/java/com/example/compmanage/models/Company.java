@@ -14,7 +14,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "companies")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,5 +35,12 @@ public class Company implements Serializable {
     @Fetch(value = FetchMode.SUBSELECT)
     @JsonManagedReference
     private List<Computer> computer;
+
+//    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    @JsonManagedReference
+//    private List<Cpu> cpus;
+
+
 
 }

@@ -5,6 +5,7 @@ import com.example.compmanage.models.Company;
 import com.example.compmanage.repository.CompanyRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class CompanyController {
         return ResponseEntity.ok().body(company);
     }
 
-    @PostMapping("/companies")
+    @PostMapping(value = "/companies", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Company createCompany(@Valid @RequestBody Company company) {
         return companyRepository.save(company);
     }

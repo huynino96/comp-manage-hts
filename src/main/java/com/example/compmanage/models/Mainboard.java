@@ -35,8 +35,7 @@ public class Mainboard implements Serializable {
     @Column(name = "mainboardType")
     private String mainBoardType;
 
-    @OneToMany(mappedBy = "mainboard", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "mainboard", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 }

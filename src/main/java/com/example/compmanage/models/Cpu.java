@@ -1,5 +1,6 @@
 package com.example.compmanage.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,8 +39,8 @@ public class Cpu implements Serializable {
     @Column(name= "cpuSpeed")
     private String cpuSpeed;
 
-    @OneToMany(mappedBy = "cpu", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = false)
+    private Computer computer;
 }

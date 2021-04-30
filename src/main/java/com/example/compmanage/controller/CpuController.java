@@ -6,7 +6,9 @@ import com.example.compmanage.models.Cpu;
 import com.example.compmanage.models.Computer;
 import com.example.compmanage.repository.ComputerRepository;
 import com.example.compmanage.repository.CpuRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,20 +25,32 @@ public class CpuController {
     private CpuRepository cpuRepository;
 
     @GetMapping("/cpus")
-    public List<Cpu> getCpu(){
+    public List getAllCpus(){
         return cpuRepository.findAll();
     }
 
-    @GetMapping("/cpus/{id}")
-    public ResponseEntity< Cpu > getCpuById(
-            @PathVariable(value = "id") Long cpuId) throws ResourceNotFoundException {
-        Cpu cpu = cpuRepository.findById(cpuId)
-                .orElseThrow(() -> new ResourceNotFoundException("CPU not found :: " + cpuId));
-        return ResponseEntity.ok().body(cpu);
+    @GetMapping("/computers/{computerId}/cpus")
+    public Cpu getCpuByComputerId(@PathVariable Long computerId) throws NotFoundException {
+
+        if(!computerRepository.existsById(computerId)) {
+            throw new NotFoundException("Computer not found!");
+        }
+
+        List cpus = cpuRepository.findByComputerId(computerId);
+        if(cpus.size() > 0) {
+            return (Cpu) cpus.get(0);
+        }else {
+            throw new NotFoundException("Cpu not found!");
+        }
     }
-    
-    @PostMapping(value = "/cpus", consumes = {"application/json"})
-    public Cpu createCpu(@Valid @RequestBody Cpu cpu) {
-        return cpuRepository.save(cpu);
+
+    @PostMapping("/computers/{computerId}/cpus")
+    public Cpu addCpu(@PathVariable Long computerId,
+                              @Valid @RequestBody Cpu cpu) throws NotFoundException {
+        return computerRepository.findById(computerId)
+                .map(computer -> {
+                    cpu.setComputer(computer);
+                    return cpuRepository.save(cpu);
+                }).orElseThrow(() -> new NotFoundException("Computer not found!"));
     }
 }

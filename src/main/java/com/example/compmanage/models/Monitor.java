@@ -27,8 +27,7 @@ public class Monitor implements Serializable {
     @Column(name = "monitorSize")
     private String monitorSize;
 
-    @OneToMany(mappedBy = "monitor", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "monitor", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 }

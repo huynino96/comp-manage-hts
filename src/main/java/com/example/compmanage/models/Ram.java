@@ -39,8 +39,7 @@ public class Ram implements Serializable {
     @Column(name = "ramQuantity")
     private String ramQuantity;
 
-    @OneToMany(mappedBy = "ram", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    private List<Computer> computer;
+//    @OneToMany(mappedBy = "ram", fetch = FetchType.EAGER)
+//    @Fetch(value = FetchMode.SUBSELECT)
+//    private List<Computer> computer;
 }

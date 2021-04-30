@@ -1,6 +1,7 @@
 package com.example.compmanage.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -11,7 +12,8 @@ import java.io.Serializable;
 @Table(name="computers")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 public class Computer implements Serializable {
     @Id
@@ -30,43 +32,48 @@ public class Computer implements Serializable {
     @JsonBackReference
     private Company company;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
-    @JoinColumn(name = "cpu_id")
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "computer")
     private Cpu cpu;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mainboard_id")
-    @JsonBackReference
-    private Mainboard mainboard;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ram_id")
-    @JsonBackReference
-    private Ram ram;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "disk_id")
-    @JsonBackReference
-    private Disk disk;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "gpu_id")
-    @JsonBackReference
-    private Gpu gpu;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "keyboard_id")
-    @JsonBackReference
-    private Keyboard keyboard;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mouse_id")
-    @JsonBackReference
-    private Mouse mouse;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "monitor_id")
-    @JsonBackReference
-    private Monitor monitor;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    @JoinColumn(name = "cpu_id")
+//    private Cpu cpu;
+////
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "mainboard_id")
+//    @JsonBackReference
+//    private Mainboard mainboard;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "ram_id")
+//    @JsonBackReference
+//    private Ram ram;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "disk_id")
+//    @JsonBackReference
+//    private Disk disk;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "gpu_id")
+//    @JsonBackReference
+//    private Gpu gpu;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "keyboard_id")
+//    @JsonBackReference
+//    private Keyboard keyboard;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "mouse_id")
+//    @JsonBackReference
+//    private Mouse mouse;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "monitor_id")
+//    @JsonBackReference
+//    private Monitor monitor;
 }
