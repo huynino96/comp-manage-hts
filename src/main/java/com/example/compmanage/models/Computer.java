@@ -43,7 +43,7 @@ public class Computer implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ram_id")
     @JsonBackReference
-    private RAM ram;
+    private Ram ram;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "disk_id")
