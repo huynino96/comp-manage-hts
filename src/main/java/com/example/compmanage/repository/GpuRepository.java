@@ -1,10 +1,9 @@
 package com.example.compmanage.repository;
 
-
-import com.example.compmanage.models.Disk;
+import com.example.compmanage.models.Gpu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DiskRepository extends JpaRepository<Disk, Long> {
+public interface GpuRepository extends JpaRepository<Gpu, Long> {
 }
