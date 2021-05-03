@@ -34,7 +34,7 @@ public class Mainboard implements Serializable {
     private String mainboardName;
 
     @Column(name = "mainboardType")
-    private String mainBoardType;
+    private String mainboardType;
 
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY, optional = false)
