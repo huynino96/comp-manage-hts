@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface KeyboardRepository extends JpaRepository<Keyboard, Long> {
-    //List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }

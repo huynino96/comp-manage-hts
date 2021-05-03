@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MainboardRepository extends JpaRepository<Mainboard, Long> {
-    //List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }

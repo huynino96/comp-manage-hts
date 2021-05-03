@@ -50,23 +50,23 @@ public class Computer implements Serializable {
             mappedBy = "computer")
     private Gpu gpu;
 
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Keyboard keyboard;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Mainboard mainboard;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Monitor monitor;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Mouse mouse;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Ram ram;
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Keyboard keyboard;
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Mainboard mainboard;
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Monitor monitor;
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Mouse mouse;
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Ram ram;
 }

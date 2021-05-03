@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface RamRepository extends JpaRepository<Ram, Long> {
-    //List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }

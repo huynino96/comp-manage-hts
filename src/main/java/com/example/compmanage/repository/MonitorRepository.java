@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MonitorRepository extends JpaRepository<Monitor, Long> {
-    //List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }

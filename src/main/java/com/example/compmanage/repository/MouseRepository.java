@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MouseRepository extends JpaRepository<Mouse, Long> {
-   // List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }
