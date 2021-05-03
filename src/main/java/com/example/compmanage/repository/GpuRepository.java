@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface GpuRepository extends JpaRepository<Gpu, Long> {
-    //List findByComputerId(Long computerId);
+    List findByComputerId(Long computerId);
 }

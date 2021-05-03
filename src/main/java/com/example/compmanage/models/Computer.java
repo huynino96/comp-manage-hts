@@ -43,11 +43,13 @@ public class Computer implements Serializable {
             cascade =  CascadeType.ALL,
             mappedBy = "computer")
     private Disk disk;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Gpu gpu;
-//
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "computer")
+    private Gpu gpu;
+
 //    @JsonBackReference
 //    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
 //    private Keyboard keyboard;
