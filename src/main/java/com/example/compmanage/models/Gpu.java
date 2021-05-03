@@ -35,8 +35,8 @@ public class Gpu implements Serializable {
     @Column(name = "gpuType")
     private String gpuType;
 
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "computer_id", nullable = true)
-//    private Computer computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }

@@ -1,5 +1,6 @@
 package com.example.compmanage.controller;
 
+
 import com.example.compmanage.models.Disk;
 import com.example.compmanage.repository.ComputerRepository;
 import com.example.compmanage.repository.DiskRepository;
@@ -48,5 +49,26 @@ public class DiskController {
                     disk.setComputer(computer);
                     return diskRepository.save(disk);
                 }).orElseThrow(() -> new NotFoundException("Computer not found!"));
+    }
+
+    @PutMapping("/disks/{diskId}")
+    public Disk updateDisk(@PathVariable Long diskId,
+                         @Valid @RequestBody Disk diskUpdated) throws NotFoundException {
+        return diskRepository.findById(diskId)
+                .map(disk -> {
+                    disk.setDiskBrand(diskUpdated.getDiskBrand());
+                    disk.setDiskType(diskUpdated.getDiskType());
+                    disk.setDiskSize(diskUpdated.getDiskSize());
+                    return diskRepository.save(disk);
+                }).orElseThrow(() -> new NotFoundException("CPU not found!"));
+    }
+
+    @DeleteMapping("/disks/{diskId}")
+    public String deleteDisk(@PathVariable Long diskId) throws NotFoundException {
+        return diskRepository.findById(diskId)
+                .map(disk -> {
+                    diskRepository.delete(disk);
+                    return "Disk Deleted Successfully!";
+                }).orElseThrow(() -> new NotFoundException("Disk not found!"));
     }
 }
