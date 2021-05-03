@@ -40,9 +40,9 @@ public class Ram implements Serializable {
     @Column(name = "ramQuantity")
     private String ramQuantity;
 
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "computer_id", nullable = true)
-//    private Computer computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }
 

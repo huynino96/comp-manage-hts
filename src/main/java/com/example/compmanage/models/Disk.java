@@ -19,6 +19,7 @@ import java.util.List;
 @Data
 public class Disk implements Serializable {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

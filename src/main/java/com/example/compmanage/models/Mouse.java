@@ -19,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Mouse implements Serializable {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -28,8 +29,8 @@ public class Mouse implements Serializable {
     @Column(name = "mouseType")
     private String mouseType;
 
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "computer_id", nullable = true)
-//    private Computer computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }

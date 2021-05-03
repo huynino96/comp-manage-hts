@@ -36,8 +36,8 @@ public class Mainboard implements Serializable {
     @Column(name = "mainboardType")
     private String mainBoardType;
 
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "computer_id", nullable = true)
-//    private Computer computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }
