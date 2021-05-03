@@ -57,7 +57,7 @@ public class RamController {
                     ram.setRamType(ramUpdated.getRamType());
                     ram.setRamQuantity(ramUpdated.getRamQuantity());
                     return ramRepository.save(ram);
-                }).orElseThrow(() -> new NotFoundException("Ram not found!"));
+                }).orElseThrow(() -> new NotFoundException("RAM not found!"));
     }
 
     @DeleteMapping("/rams/{ramId}")
@@ -65,8 +65,8 @@ public class RamController {
         return ramRepository.findById(ramId)
                 .map(ram -> {
                     ramRepository.delete(ram);
-                    return "Ram Deleted Successfully!";
-                }).orElseThrow(() -> new NotFoundException("Ram not found!"));
+                    return "RAM Deleted Successfully!";
+                }).orElseThrow(() -> new NotFoundException("RAM not found!"));
     }
     
 }
