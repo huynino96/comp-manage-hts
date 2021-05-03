@@ -43,51 +43,28 @@ public class Computer implements Serializable {
             cascade =  CascadeType.ALL,
             mappedBy = "computer")
     private Disk disk;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Gpu gpu;
-//
-//    @JsonBackReference
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
-//    private Keyboard keyboard;
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JsonBackReference
-//    @JoinColumn(name = "cpu_id")
-//    private Cpu cpu;
-////
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "mainboard_id")
-//    @JsonBackReference
-//    private Mainboard mainboard;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "ram_id")
-//    @JsonBackReference
-//    private Ram ram;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "disk_id")
-//    @JsonBackReference
-//    private Disk disk;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "gpu_id")
-//    @JsonBackReference
-//    private Gpu gpu;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "keyboard_id")
-//    @JsonBackReference
-//    private Keyboard keyboard;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "mouse_id")
-//    @JsonBackReference
-//    private Mouse mouse;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "monitor_id")
-//    @JsonBackReference
-//    private Monitor monitor;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Gpu gpu;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Keyboard keyboard;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Mainboard mainboard;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Monitor monitor;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Mouse mouse;
+
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+    private Ram ram;
 }
