@@ -41,6 +41,6 @@ public class Cpu implements Serializable {
 
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "computer_id", nullable = false)
+    @JoinColumn(name = "computer_id", nullable = true)
     private Computer computer;
 }

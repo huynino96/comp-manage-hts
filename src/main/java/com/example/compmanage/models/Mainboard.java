@@ -1,5 +1,6 @@
 package com.example.compmanage.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +36,8 @@ public class Mainboard implements Serializable {
     @Column(name = "mainboardType")
     private String mainBoardType;
 
-//    @OneToMany(mappedBy = "mainboard", fetch = FetchType.EAGER)
-//    @Fetch(value = FetchMode.SUBSELECT)
-//    private List<Computer> computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }

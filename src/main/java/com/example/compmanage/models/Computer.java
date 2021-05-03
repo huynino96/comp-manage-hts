@@ -37,6 +37,20 @@ public class Computer implements Serializable {
             cascade =  CascadeType.ALL,
             mappedBy = "computer")
     private Cpu cpu;
+
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "computer")
+    private Disk disk;
+//
+//    @JsonBackReference
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+//    private Gpu gpu;
+//
+//    @JsonBackReference
+//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "computer")
+//    private Keyboard keyboard;
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JsonBackReference
 //    @JoinColumn(name = "cpu_id")

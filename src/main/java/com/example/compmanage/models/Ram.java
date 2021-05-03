@@ -1,5 +1,6 @@
 package com.example.compmanage.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,7 +40,8 @@ public class Ram implements Serializable {
     @Column(name = "ramQuantity")
     private String ramQuantity;
 
-//    @OneToMany(mappedBy = "ram", fetch = FetchType.EAGER)
-//    @Fetch(value = FetchMode.SUBSELECT)
-//    private List<Computer> computer;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "computer_id", nullable = true)
+    private Computer computer;
 }
