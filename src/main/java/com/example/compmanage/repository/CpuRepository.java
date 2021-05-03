@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CpuRepository extends JpaRepository<Cpu, Long> {
-    List findByComputerId(Long studentId);
+    List findByComputerId(Long computerId);
 }

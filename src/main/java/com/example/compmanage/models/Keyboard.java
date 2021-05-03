@@ -28,8 +28,8 @@ public class Keyboard implements Serializable {
     @Column(name = "keyboardProduct")
     private String keyboardProduct;
 
-    @JsonBackReference
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "computer_id", nullable = true)
-    private Computer computer;
+//    @JsonBackReference
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "computer_id", nullable = true)
+//    private Computer computer;
 }

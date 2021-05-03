@@ -31,7 +31,6 @@ public class CpuController {
 
     @GetMapping("/computers/{computerId}/cpus")
     public Cpu getCpuByComputerId(@PathVariable Long computerId) throws NotFoundException {
-
         if(!computerRepository.existsById(computerId)) {
             throw new NotFoundException("Computer not found!");
         }
@@ -52,5 +51,27 @@ public class CpuController {
                     cpu.setComputer(computer);
                     return cpuRepository.save(cpu);
                 }).orElseThrow(() -> new NotFoundException("Computer not found!"));
+    }
+
+    @PutMapping("/cpus/{cpuId}")
+    public Cpu updateCpu(@PathVariable Long cpuId,
+                                 @Valid @RequestBody Cpu cpuUpdated) throws NotFoundException {
+        return cpuRepository.findById(cpuId)
+                .map(cpu -> {
+                    cpu.setCpuType(cpuUpdated.getCpuType());
+                    cpu.setCoreType(cpuUpdated.getCoreType());
+                    cpu.setCpuGen(cpuUpdated.getCpuGen());
+                    cpu.setCpuSpeed(cpuUpdated.getCpuSpeed());
+                    return cpuRepository.save(cpu);
+                }).orElseThrow(() -> new NotFoundException("CPU not found!"));
+    }
+
+    @DeleteMapping("/cpus/{cpuId}")
+    public String deleteCpu(@PathVariable Long cpuId) throws NotFoundException {
+        return cpuRepository.findById(cpuId)
+                .map(cpu -> {
+                    cpuRepository.delete(cpu);
+                    return "CPU Deleted Successfully!";
+                }).orElseThrow(() -> new NotFoundException("CPU not found!"));
     }
 }

@@ -28,8 +28,8 @@ public class Monitor implements Serializable {
     @Column(name = "monitorSize")
     private String monitorSize;
 
-    @JsonBackReference
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "computer_id", nullable = true)
-    private Computer computer;
+//    @JsonBackReference
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "computer_id", nullable = true)
+//    private Computer computer;
 }
